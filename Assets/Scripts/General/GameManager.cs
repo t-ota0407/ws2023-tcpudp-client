@@ -48,15 +48,13 @@ public class GameManager : MonoBehaviour
             SetConnectionStatus(new ConnectionStatus(true, connectionStatus.isConnected));
             if (connectionStatus.isConnected)
             {
-                // connection/end‚ð’@‚­
                 StartCoroutine(httpCommunicationManager.EndConnection(myUuid, token, SetConnectionStatus));
-                Debug.Log("end");
+                Debug.Log("Connection end");
             }
             else
             {
-                // connection/start‚ð’@‚­
                 StartCoroutine(httpCommunicationManager.StartConnection(userName, SetMyUuid, SetToken, SetConnectionStatus));
-                Debug.Log("start");
+                Debug.Log("Connection start");
             }
         }
     }
