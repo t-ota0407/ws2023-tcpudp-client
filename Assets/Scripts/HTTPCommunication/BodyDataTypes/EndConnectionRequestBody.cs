@@ -9,4 +9,3 @@ public class EndConnectionRequestBody
         this.uuid = uuid.ToString();
     }
 }
-
