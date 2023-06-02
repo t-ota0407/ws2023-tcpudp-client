@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +6,7 @@ public class MyCubeController : MonoBehaviour
     [SerializeField]
     private Text userNameText;
 
-    private const float movementStep = 0.03f;
+    private const float movementStep = 0.04f;
 
     // Start is called before the first frame update
     void Start()

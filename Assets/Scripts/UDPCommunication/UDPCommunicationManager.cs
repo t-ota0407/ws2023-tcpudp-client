@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class SocketCommunicationManager
+public class UDPCommunicationManager
 {
     private UdpClient udpClient;
 
@@ -16,18 +16,16 @@ public class SocketCommunicationManager
         get { return isListening; }
     }
 
-    public SocketCommunicationManager(string serverIPAddress, int serverPort, int clientPort)
+    public UDPCommunicationManager(string serverIPAddress, int serverPort, int clientPort)
     {
         try
         {
             udpClient = new UdpClient(clientPort);
             udpClient.Connect(serverIPAddress, serverPort);
-            Debug.Log("ê⁄ë±ê¨å˜");
         }
         catch (SocketException e)
         {
-            Debug.Log("ê⁄ë±é∏îs");
-            Debug.Log(e.Message);
+            Debug.LogError("UDP connection error: " + e.Message);
         }
     }
 
@@ -60,8 +58,7 @@ public class SocketCommunicationManager
         }
         catch(Exception e)
         {
-            Debug.Log(e.Message);
-            Debug.Log("parse error");
+            Debug.LogError("UDP datagram parse error: " + e.Message);
         }
 
 
