@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private const int clientUdpPort = 30000;
 
     private HTTPCommunicationManager httpCommunicationManager;
-    private SocketCommunicationManager socketCommunicationManager;
+    private UDPCommunicationManager socketCommunicationManager;
 
     private string myUuid;
     private string token;
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         httpCommunicationManager = new HTTPCommunicationManager(isLocal ? $"http://{localIP}:{serverHttpPort}" : $"http://{remoteIP}:{serverHttpPort}");
-        socketCommunicationManager = new SocketCommunicationManager((isLocal ? localIP : remoteIP), serverUdpPort, clientUdpPort);
+        socketCommunicationManager = new UDPCommunicationManager((isLocal ? localIP : remoteIP), serverUdpPort, clientUdpPort);
 
         myCubeObj.GetComponent<MyCubeController>().SetUsernameText(userName);
     }
@@ -48,15 +48,13 @@ public class GameManager : MonoBehaviour
             SetConnectionStatus(new ConnectionStatus(true, connectionStatus.isConnected));
             if (connectionStatus.isConnected)
             {
-                // connection/end‚ð’@‚­
                 StartCoroutine(httpCommunicationManager.EndConnection(myUuid, token, SetConnectionStatus));
-                Debug.Log("end");
+                Debug.Log("Connection end");
             }
             else
             {
-                // connection/start‚ð’@‚­
                 StartCoroutine(httpCommunicationManager.StartConnection(userName, SetMyUuid, SetToken, SetConnectionStatus));
-                Debug.Log("start");
+                Debug.Log("Connection start");
             }
         }
     }

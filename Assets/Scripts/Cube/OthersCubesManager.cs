@@ -10,7 +10,7 @@ public class OthersCubesManager : MonoBehaviour
     private static List<ResponseActiveUser> responseActiveUsers;
     private static bool isResponseActiveUsersDirty = false;
 
-    private static List<string> exclusiveUuid = new List<string>();
+    private static readonly List<string> exclusiveUuid = new List<string>();
 
     void FixedUpdate()
     {
@@ -26,7 +26,6 @@ public class OthersCubesManager : MonoBehaviour
                     Vector3 position = new Vector3(responseActiveUser.positionX, responseActiveUser.positionY, responseActiveUser.positionZ);
                     UpdateCubePosition(uuid, userName, position);
                 }
-
             }
             isResponseActiveUsersDirty = false;
         }
@@ -49,7 +48,6 @@ public class OthersCubesManager : MonoBehaviour
     private void UpdateCubePosition(string uuid, string userName, Vector3 position)
     {
         var pair = uuidOthersCubePairs.Find((othersCube) => othersCube.uuid == uuid);
-        Debug.Log(pair.uuid);
 
         if (pair.uuid == null)
         {
