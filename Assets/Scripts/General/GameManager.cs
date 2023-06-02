@@ -10,16 +10,18 @@ public class GameManager : MonoBehaviour
     private bool isLocal;
 
     [SerializeField]
+    private string remoteIP = "X.X.X.X";
+
+    [SerializeField]
     private string userName = "user1";
 
     [Header("References")]
     public GameObject myCubeObj;
 
     private const string localIP = "127.0.0.1";
-    private const string remoteIP = "34.85.45.170";
 
     private const int serverHttpPort = 8080;
-    private const int serverUdpPort = 3000;
+    private const int serverUdpPort = 55000;
     private const int clientUdpPort = 30000;
 
     private HTTPCommunicationManager httpCommunicationManager;
