@@ -10,5 +10,5 @@ This program allows users to manipulate their own objects and synchronizes the p
 1. Open this project with the Unity.
 1. Open "SampleScene" in "Asset/Scenes".
 1. Select "Game Manager" object in the project hierarchy.
-1. When communicate with a remote server, check "Is Local" and put the server's external IP in "Remote IP" in the inspector. When communicate with a server on the local host, uncheck "Is Local" in the inspector.
+1. When communicate with a remote server, uncheck "Is Local" and put the server's external IP in "Remote IP" in the inspector. When communicate with a server on the local host, check "Is Local" in the inspector.
 1. Play the scene.
