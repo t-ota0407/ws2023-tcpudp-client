@@ -31,7 +31,7 @@ public class OthersCubesManager : MonoBehaviour
             for (var i = 0; i <uuidOthersCubePairs.Count ; i++)
             {
                 (string uuid, GameObject gameObject) uuidOthersCubePair = uuidOthersCubePairs[i];
-                if (responseActiveUsers.Exists((ResponseActiveUser responseActiveUser) => responseActiveUser.uuid == uuidOthersCubePair.uuid))
+                if (!responseActiveUsers.Exists((ResponseActiveUser responseActiveUser) => responseActiveUser.uuid == uuidOthersCubePair.uuid))
                 {
                     Destroy(uuidOthersCubePair.gameObject);
                     uuidOthersCubePairs.RemoveAt(i);
