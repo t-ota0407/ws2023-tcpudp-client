@@ -27,6 +27,19 @@ public class OthersCubesManager : MonoBehaviour
                     UpdateCubePosition(uuid, userName, position);
                 }
             }
+
+            for (var i = 0; i <uuidOthersCubePairs.Count ; i++)
+            {
+                (string uuid, GameObject gameObject) uuidOthersCubePair = uuidOthersCubePairs[i];
+                if (!responseActiveUsers.Exists((ResponseActiveUser responseActiveUser) => responseActiveUser.uuid == uuidOthersCubePair.uuid))
+                {
+                    Destroy(uuidOthersCubePair.gameObject);
+                    uuidOthersCubePairs.RemoveAt(i);
+                    i--;
+                }
+                
+            }
+
             isResponseActiveUsersDirty = false;
         }
     }
